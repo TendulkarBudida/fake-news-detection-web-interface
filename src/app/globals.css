@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark-blue: #1E1E2F;
+  --color-light-blue-gradient: linear-gradient(135deg, #C4D9FF, #E8F9FF);
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-border: #4A4A4A;
+  --color-hover-border-dark: #3A3A3A;
+  --color-hover-border-light: #C5BAFF;
+  --color-icon-dark: #D1D5DB;
+  --color-icon-light: #black;
+  --color-input-bg-dark: #40414F;
+  --color-input-bg-light: #FBFBFB;
+  --color-input-icon-dark: #D1D5DB;
+  --color-input-icon-light: #6B7280;
+  --color-input-text-dark: #ffffff;
+  --color-input-text-light: #000000;
+  --color-input-placeholder-dark: #9CA3AF;
+  --color-input-placeholder-light: #6B7280;
+  --color-button-bg: #C5BAFF;
+  --color-button-bg-hover: #b3a5fb;
+  --color-spinner-border: #ffffff;
+  --color-chat-bubble-bg: #40414F;
+  --color-error-icon: #EF4444;
+  --color-error-text: #F87171;
+  --color-extract-icon: #38BDF8;
+  --color-extract-title: #38BDF8;
+  --color-chat-text: #F3F4F6; /* similar to gray-100 */
+  --color-result-icon: #4ADE80;
+  --color-result-title: #4ADE80;
+  /* --color-footer-bg: #343541; */
+  --color-footer-text: #9CA3AF;
+}
+
+.bg-light-blue-gradient {
+  background: var(--color-light-blue-gradient);
+}
+
+.bg-dark-blue {
+  background-color: var(--color-dark-blue);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
