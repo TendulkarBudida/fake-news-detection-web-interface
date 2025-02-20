@@ -280,7 +280,10 @@ export default function Home() {
             <button
               onClick={generateScript}
               disabled={isLoading}
-              className="inline-flex items-center justify-center rounded-md px-3 py-2 bg-[var(--color-button-bg)] hover:bg-[var(--color-button-bg-hover)] disabled:opacity-50"
+              className={`inline-flex items-center justify-center rounded-md px-3 py-2
+              ${isDarkMode ? 'bg-[var(--color-button-bg-dark)]' : 'bg-[var(--color-button-bg-light)]'}
+              ${isDarkMode ? 'hover:bg-[var(--color-button-bg-hover-dark)]' : 'hover:bg-[var(--color-button-bg-hover-light)]'}
+              disabled:opacity-50`}
             >
               {isLoading ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--color-spinner-border)] border-t-transparent" />
