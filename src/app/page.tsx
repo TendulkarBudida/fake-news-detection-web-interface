@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-// import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 import {
   ExclamationCircleIcon,
@@ -127,7 +127,7 @@ export default function Home() {
         {/* BEFORE FIRST PROMPT */}
         {!firstPromptSubmitted && !isLoading && (
           <div className="flex flex-col items-center justify-center h-full px-4">
-            <h2 className="text-3xl font-semibold mb-8">What can I help with?</h2>
+            <h2 className="text-3xl font-semibold mb-8">Input News Article for Analysis</h2>
 
             {/* Center Input Box */}
             <div
@@ -164,12 +164,15 @@ export default function Home() {
                 <button
                   onClick={generateScript}
                   disabled={isLoading}
-                  className="flex items-center justify-center rounded-md px-3 py-2 bg-[var(--color-button-bg)] hover:bg-[var(--color-button-bg-hover)] disabled:opacity-50"
+                  className={`flex items-center justify-center rounded-md px-3 py-2 
+                    ${isDarkMode ? 'bg-[var(--color-button-bg-dark)]' : 'bg-[var(--color-button-bg-light)]'}
+                    ${isDarkMode ? 'hover:bg-[var(--color-button-bg-hover-dark)]' : 'hover:bg-[var(--color-button-bg-hover-light)]'}
+                    disabled:opacity-50`}
                 >
                   {isLoading ? (
                     <div className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--color-spinner-border)] border-t-transparent" />
                   ) : (
-                    <PaperAirplaneIcon className="h-5 w-5 rotate-90 text-[var(--color-white)]" />
+                    <PaperAirplaneIcon className="h-5 w-5 text-[var(--color-white)]" />
                   )}
                 </button>
               </div>
@@ -193,8 +196,8 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               className="flex justify-end"
             >
-              <div className="rounded-lg p-4 max-w-[75%] bg-[var(--color-chat-bubble-bg)]">
-                <p className="whitespace-pre-wrap text-[var(--color-chat-text)]">
+              <div className={`rounded-lg p-4 max-w-[75%] ${isDarkMode ? 'bg-[var(--color-chat-bubble-bg-dark)]' : 'bg-[var(--color-chat-bubble-bg-light)]'}`}>
+                <p className={`whitespace-pre-wrap ${isDarkMode ? 'text-[var(--color-chat-text-dark)]' : 'text-[var(--color-chat-text-light)]'}`}>
                   {prompt}
                 </p>
               </div>
@@ -207,7 +210,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex justify-start"
               >
-                <div className="flex items-start space-x-2 rounded-lg p-4 max-w-[75%] bg-[var(--color-chat-bubble-bg)]">
+                <div className={`flex items-start space-x-2 rounded-lg p-4 max-w-[75%] ${isDarkMode ? 'bg-[var(--color-chat-bubble-bg-dark)]' : 'bg-[var(--color-chat-bubble-bg-light)]'}`}>
                   <ExclamationCircleIcon className="h-5 w-5 text-[var(--color-error-icon)] mt-0.5" />
                   <p className="text-[var(--color-error-text)]">{error}</p>
                 </div>
@@ -221,7 +224,7 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex justify-start"
               >
-                <div className="flex items-start space-x-2 rounded-lg p-4 max-w-[75%] bg-[var(--color-chat-bubble-bg)]">
+                <div className={`flex items-start space-x-2 rounded-lg p-4 max-w-[75%] ${isDarkMode ? 'bg-[var(--color-chat-bubble-bg-dark)]' : 'bg-[var(--color-chat-bubble-bg-light)]'}`}>
                   <DocumentTextIcon className="h-5 w-5 text-[var(--color-extract-icon)] mt-0.5" />
                   <div>
                     <h2 className="font-medium text-[var(--color-extract-title)]">
@@ -240,16 +243,14 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 className="flex justify-start"
               >
-                <div className="flex items-start space-x-2 rounded-lg p-4 max-w-[75%] bg-[var(--color-chat-bubble-bg)]">
+                <div className={`flex items-start space-x-2 rounded-lg p-4 max-w-[75%] ${isDarkMode ? 'bg-[var(--color-chat-bubble-bg-dark)]' : 'bg-[var(--color-chat-bubble-bg-light)]'}`}>
                   <CheckCircleIcon className="h-5 w-5 text-[var(--color-result-icon)] mt-0.5" />
                   <div>
                     <h2 className="font-medium text-[var(--color-result-title)]">
                       Analysis Result
                     </h2>
-                    <p className="text-[var(--color-chat-text)]">
-                      {typeof result === 'string'
-                        ? result
-                        : JSON.stringify(result)}
+                    <p className={`${isDarkMode ? 'bg-[var(--color-chat-text-dark)]' : 'bg-[var(--color-chat-text-light)]'}`}>
+                      {typeof result === 'string' ? result : JSON.stringify(result)}
                     </p>
                   </div>
                 </div>
@@ -262,7 +263,7 @@ export default function Home() {
       {/* BOTTOM INPUT */}
       {firstPromptSubmitted && (
         <div className="border-t border-[var(--color-border)] p-3">
-          <div className="mx-auto w-full max-w-3xl flex items-center space-x-2 bg-[var(--color-chat-bubble-bg)] rounded-md px-3 py-2">
+          <div className={`mx-auto w-full max-w-3xl flex items-center space-x-2 rounded-md px-3 py-2 ${isDarkMode ? 'bg-[var(--color-chat-bubble-bg-dark)]' : 'bg-[var(--color-chat-bubble-bg-light)]'}`}>
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
@@ -274,7 +275,7 @@ export default function Home() {
               }}
               rows={1}
               placeholder="Input News Here"
-              className="flex-1 resize-none bg-transparent focus:outline-none text-[var(--color-input-text-dark)] placeholder-[var(--color-input-placeholder-dark)]"
+              className={`flex-1 resize-none bg-transparent focus:outline-none ${isDarkMode ? 'text-[var(--color-input-text-dark)]' : 'text-[var(--color-input-text-light)]'} placeholder-[var(--color-input-placeholder-dark)]`}
             />
             <button
               onClick={generateScript}
@@ -284,7 +285,7 @@ export default function Home() {
               {isLoading ? (
                 <div className="h-4 w-4 animate-spin rounded-full border-2 border-[var(--color-spinner-border)] border-t-transparent" />
               ) : (
-                <PaperAirplaneIcon className="h-5 w-5 rotate-90 text-[var(--color-white)]" />
+                <PaperAirplaneIcon className="h-5 w-5 text-[var(--color-white)]" />
               )}
             </button>
           </div>
@@ -292,7 +293,7 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      {/* <footer className="w-full max-w-full sm:max-w-4xl lg:max-w-6xl text-center mt-2 sm:mt-6 text-gray-400 text-xs sm:text-sm space-y-1 px-14">
+      <footer className={`flex flex-col items-center justify-center py-2 text-sm ${isDarkMode ? 'text-[var(--color-footer-text-dark)]' : 'text-[var(--color-footer-text-light)]'}`}>
         <p>© {new Date().getFullYear()} All rights reserved. Developed by <b>Tendulkar Budida</b></p>
         <div className="flex justify-center gap-4">
           <a href="https://github.com/TendulkarBudida" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-gray-200 underline">
@@ -302,10 +303,10 @@ export default function Home() {
             <FaLinkedin className="text-base sm:text-lg" /> LinkedIn
           </a>
         </div>
-      </footer> */}
-      <footer className="flex items-center justify-center py-2 text-sm bg-[var(--color-footer-bg)] text-[var(--color-footer-text)]">
-        <p>Developed by Team Name | © {new Date().getFullYear()}</p>
       </footer>
+      {/* <footer className="flex items-center justify-center py-2 text-sm bg-[var(--color-footer-bg)] text-[var(--color-footer-text)]">
+        <p>Developed by Team Name | © {new Date().getFullYear()}</p>
+      </footer> */}
     </div>
   );
 }

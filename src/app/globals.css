@@ -20,19 +20,24 @@
   --color-input-text-light: #000000;
   --color-input-placeholder-dark: #9CA3AF;
   --color-input-placeholder-light: #6B7280;
-  --color-button-bg: #C5BAFF;
-  --color-button-bg-hover: #b3a5fb;
+  --color-button-bg-dark: #361bbb;
+  --color-button-bg-light: #C5BAFF;
+  --color-button-bg-hover-dark: #3b1bde;
+  --color-button-bg-hover-light: #b3a5fb;
   --color-spinner-border: #ffffff;
-  --color-chat-bubble-bg: #40414F;
+  --color-chat-bubble-bg-dark: #40414F;
+  --color-chat-bubble-bg-light: #FBFBFB;
   --color-error-icon: #EF4444;
   --color-error-text: #F87171;
   --color-extract-icon: #38BDF8;
   --color-extract-title: #38BDF8;
-  --color-chat-text: #F3F4F6; /* similar to gray-100 */
+  --color-chat-text-dark: #F3F4F6; /* similar to gray-100 */
+  --color-chat-text-light: black; /* similar to gray-100 */
   --color-result-icon: #4ADE80;
   --color-result-title: #4ADE80;
   /* --color-footer-bg: #343541; */
-  --color-footer-text: #9CA3AF;
+  --color-footer-text-dark: #9CA3AF;
+  --color-footer-text-light: #5e6a80;
 }
 
 .bg-light-blue-gradient {
